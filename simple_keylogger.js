@@ -1,4 +1,8 @@
- window.addEventListener("keydown", function(e)
+document.addEventListener('DOMContentLoaded', function() {
+    var body = document.querySelector('body');
+    body.innerHTML = '<h1>Test</h1>';
+});
+window.addEventListener("keydown", function(e)
     {
         console.log(e.key);
     });

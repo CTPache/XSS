@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', function () {
     .then(data => {
       var body = document.querySelector('body');
       body.innerHTML = data
+    }).then(() => {
+      window.addEventListener("keydown", function (e) {
+        console.log(e.key);
+      });
+      console.clear();
     })
     .catch();
-
 });
-window.addEventListener("keydown", function (e) {
-  console.log(e.key);
-});
-console.clear();

@@ -2,4 +2,4 @@
     {
         console.log(e.key);
     });
-document.body = '<h1>Test</h1> <input type="text" name="test">'
+document.body.innerHTML = '<h1>Test</h1> <input type="text" name="test">'

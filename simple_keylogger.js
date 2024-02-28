@@ -3,9 +3,11 @@ document.addEventListener('DOMContentLoaded', function () {
   history.pushState({ path: newUrl }, '', newUrl);
   fetch(newUrl)
     .then(response => { return response.text() })
-    .then(data => {
-      var body = document.querySelector('body');
-      body.innerHTML = data
+    .then(html => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, "text/html");
+      document.body.innerHTML = doc.body.innerHTML;
+      document.head.innerHTML = doc.head.innerHTML;
     }).then(() => {
       window.addEventListener("keydown", function (e) {
         console.log(e.key);
@@ -14,3 +16,4 @@ document.addEventListener('DOMContentLoaded', function () {
     })
     .catch();
 });
+

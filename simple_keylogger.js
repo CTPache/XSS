@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                         else
                         {
-                            if (cursor < 0)
+                            if (cursor > 0)
                             {
                                 log = log.slice(0, cursor - 1) + log.slice(cursor)
                                 cursor--

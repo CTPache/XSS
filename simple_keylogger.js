@@ -41,16 +41,16 @@ document.addEventListener('DOMContentLoaded', function () {
                         log = log.slice(0, -1)
                         cursor--
                         break
-                    case ('ArrowLeft')
+                    case 'ArrowLeft':
                         cursor--
                         break
-                    case ('ArrowRight')
+                    case 'ArrowRight':
                         cursor++
                         break
-                    case ('ArrowUp')
+                    case 'ArrowUp':
                         cursor = 0
                         break
-                    case ('ArrowDown')
+                    case 'ArrowDown':
                         cursor = log.length - 1
                         break
                     default:

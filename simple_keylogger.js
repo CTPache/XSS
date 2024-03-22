@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
             inputs.forEach(i =>
                 i.addEventListener("blur", (event) => {
                     fetch(https_listener_for_logging, {
-                        method: "POST", body: JSON.stringify({ "log": log, "timestamp": Date.now(), 'id': event.currentTarget.getAttribute("id") }),
+                        method: "POST", body: JSON.stringify({ "log": log, 'url' : newUrl, 'id': event.currentTarget.getAttribute("id"), "timestamp": Date.now() }),
                     })
                     log = ''
                 })

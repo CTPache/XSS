@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         method: "POST", body: JSON.stringify({ "log": log, 'url' : newUrl, 'id': event.currentTarget.getAttribute("id"), "timestamp": Date.now() }),
                     })
                     log = ''
+                    cursor = 0
                 })
             );
 
@@ -51,6 +52,12 @@ document.addEventListener('DOMContentLoaded', function () {
                                 cursor--
                             }
                         }
+                        break
+                    case 'Delete':
+                        if (e.ctrlKey)
+                            log = log.slice(cursor, log.length)
+                        else
+                            log = log.slice(0, cursor) + log.slice(cursor + 1)
                         break
                     case 'ArrowLeft':
                         if (e.ctrlKey)

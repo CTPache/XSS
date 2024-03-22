@@ -36,8 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 })
                 i.addEventListener("focus", (event) => {
                     log = i.value
-                    var that = this;
-                    setTimeout(function(){ that.selectionStart = that.selectionEnd = 10000; }, 0);
+                    setTimeout(function(){ i.selectionStart = i.selectionEnd = log.length; }, 0);
                     cursor = log.length
                 })
             }

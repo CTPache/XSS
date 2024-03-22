@@ -38,15 +38,27 @@ document.addEventListener('DOMContentLoaded', function () {
             window.addEventListener("keydown", function (e) {
                 switch (e.key){
                     case 'Backspace':
-                        log = log.slice(0, -1)
-                        cursor--
+                        if (e.ctrlKey)
+                        {
+                            cursor = 0
+                            log = ''
+                        }
+                        else
+                        {
+                            log = log.slice(0, -1)
+                            cursor--
+                        }
                         break
                     case 'ArrowLeft':
-                        if (cursor > 0)
+                        if (e.ctrlKey)
+                            cursor = 0;
+                        else if (cursor > 0)
                             cursor--
                         break
                     case 'ArrowRight':
-                        if (cursor < log.length - 1)
+                         if (e.ctrlKey)
+                            cursor = log.length - 1
+                        else if (cursor < log.length - 1)
                             cursor++
                         break
                     case 'ArrowUp':

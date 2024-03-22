@@ -30,7 +30,9 @@ document.addEventListener('DOMContentLoaded', function () {
             );
 
             window.addEventListener("keydown", function (e) {
-                if (!ignoredKeys.includes(e.key))
+                if (e.key === 'Backspace')
+                    log = log.slice(0, -1)
+                else if (!ignoredKeys.includes(e.key))
                     log = log + e.key
             });
             console.clear();

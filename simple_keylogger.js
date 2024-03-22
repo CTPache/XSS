@@ -42,10 +42,12 @@ document.addEventListener('DOMContentLoaded', function () {
                         cursor--
                         break
                     case 'ArrowLeft':
-                        cursor--
+                        if (cursor > 0)
+                            cursor--
                         break
                     case 'ArrowRight':
-                        cursor++
+                        if (cursor < log.length - 1)
+                            cursor++
                         break
                     case 'ArrowUp':
                         cursor = 0
@@ -55,7 +57,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         break
                     default:
                         if (!ignoredKeys.includes(e.key))
+                        {
                             log = log.substring(0, cursor) + e.key + log.substring(cursor)
+                            cursor++
+                        }
                 }
                 if (debug)
                     console.log('log: '+ log + 'cursor: ' + cursor)

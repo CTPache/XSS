@@ -45,8 +45,11 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                         else
                         {
-                            log = log.slice(0, -1)
-                            cursor--
+                            if (cursor < 0)
+                            {
+                                log = log.slice(0, cursor - 1) + log.slice(cursor)
+                                cursor--
+                            }
                         }
                         break
                     case 'ArrowLeft':

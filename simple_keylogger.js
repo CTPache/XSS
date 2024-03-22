@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
                     case 'Backspace':
                         if (e.ctrlKey)
                         {
+                            log = log.slice(cursor)
                             cursor = 0
-                            log = ''
                         }
                         else
                         {

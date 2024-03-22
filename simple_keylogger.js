@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         }
                 }
                 if (debug)
-                    console.log('log: '+ log + 'cursor: ' + cursor)
+                    console.log('log: '+ log + '\ncursor: ' + cursor)
             });
             console.clear();
         })

